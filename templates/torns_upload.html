@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% if messages %}
+        {% for message in messages %}
+            <div>
+                <strong>{{message|safe}}</strong>
+            </div>
+        {% endfor %}
+    {% else %}
+    {{order}}
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="file1"> Upload KAPOS</label>
+        <input type="file" id="file1" name="file">
+        <p>Only accepts CSV files</p>
+        <button type="submit">Upload</button>
+    </form>
+    {% endif %}
+    {% for kapo in kapos %}
+    {{kapo.name}}
+    {% endfor %}
+</body>
+</html>
